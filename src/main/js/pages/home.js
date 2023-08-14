@@ -87,7 +87,8 @@ class Instrumento extends React.Component {
 			<tr>
 				<td>{this.props.instrumento.nombre}</td>
 				<td>
-					<Link to={`/ver-instrumento/${id}`}>Ver</Link>
+					<Link to={`/ver-instrumento/${id}`}>Ver</Link> | 
+					<Link to={`/editar-instrumento/${id}`}>Editar</Link>
 				</td>
 			</tr>
 		)
