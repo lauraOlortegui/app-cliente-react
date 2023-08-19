@@ -9,13 +9,13 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	private final ProductoRepository repositoryP;
 	private final VentaRepository repositoryV;
-	private final DetalleVentaRepository repositoryD;
+	private final DetalleRepository repositoryD;
 
 	@Autowired
 	public DatabaseLoader(
 		ProductoRepository repositoryP,
 		 VentaRepository repositoryV,
-		 DetalleVentaRepository repositoryD) {
+		 DetalleRepository repositoryD) {
 		this.repositoryP = repositoryP;
 		this.repositoryV = repositoryV;
 		this.repositoryD = repositoryD;
@@ -38,9 +38,9 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.repositoryV.save(venta1);
 		this.repositoryV.save(venta2);
 
-		DetalleVenta detalle1 = new DetalleVenta(venta1, producto1, 2);
+		Detalle detalle1 = new Detalle(venta1, producto1, 2);
 		this.repositoryD.save(detalle1);
-		DetalleVenta detalle2 = new DetalleVenta(venta2, producto2, 2);
+		Detalle detalle2 = new Detalle(venta2, producto2, 2);
 		this.repositoryD.save(detalle2);
 
 	}

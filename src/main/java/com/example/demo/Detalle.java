@@ -7,7 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class DetalleVenta {
+public class Detalle {
 
 	private @Id @GeneratedValue Long id;
 
@@ -21,9 +21,9 @@ public class DetalleVenta {
 
 	private int cantidad;
 
-	public DetalleVenta() {}
+	public Detalle() {}
 
-	public DetalleVenta (Venta venta, Producto producto, int cantidad) {
+	public Detalle (Venta venta, Producto producto, int cantidad) {
 		this.venta = venta;
 		this.producto = producto;
 		this.cantidad = cantidad;
