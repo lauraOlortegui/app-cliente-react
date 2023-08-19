@@ -3,18 +3,17 @@ const client = require('../client');
 const { Link } = require('react-router-dom');
 const { useState } = require('react');
 
-const PageNuevoInstrumento = () => {
+const PageNuevoProducto= () => {
 
     const [nombre, setNombre] = useState('');
-    const [categoria, setCategoria] = useState('');
-    const [descripcion, setDescripcion] = useState('');
+    const [precio, setPrecio] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
         client({
             method: 'POST',
-            path: '/api/instrumentos',
-            entity: { nombre: nombre, categoria: categoria, descripcion: descripcion },
+            path: '/api/productos',
+            entity: { nombre: nombre, precio: precio},
             headers: { 'Content-Type': 'application/json' }
         }).done(() => {
             window.location = '/';
@@ -23,16 +22,13 @@ const PageNuevoInstrumento = () => {
 
     return (
         <>
-            <h1>Nuevo Instrumento</h1>
+            <h1>Nuevo Producto</h1>
             <form onSubmit={handleSubmit}>
             <label htmlFor='nombre'>Nombre</label>
                 <input type="text" id="nombre" name="nombre" onChange={(e)=>setNombre(e.target.value)} />
                 <br />
-                <label htmlFor='categoria'>Categoría</label>
-                <input type="text" id="categoria" name="categoria" onChange={(e)=>setCategoria(e.target.value)} />
-                <br />
-                <label htmlFor='descripcion'>Descripcion</label>
-                <textarea cols={30} id="descripcion" name="descripcion" onChange={(e)=>setDescripcion(e.target.value)}></textarea>
+                <label htmlFor='precio'>Precio</label>
+                <input type="text" id="precio" name="precio" onChange={(e)=>setPrecio(e.target.value)} />
                 <br />
                 <br />
                 <input type="submit" value="Nuevo Instrumento" />
@@ -42,4 +38,4 @@ const PageNuevoInstrumento = () => {
     )
 }
 
-module.exports = PageNuevoInstrumento;
+module.exports = PageNuevoProducto;

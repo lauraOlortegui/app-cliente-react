@@ -26,7 +26,7 @@ class PageHome extends React.Component {
 					<div style={{"width": "calc(100% / 3)"}}>
 						<Titulo entidad="Productos" emoji="🎸" />
 						<ProductoList productos={this.state.productos} />
-						<Link to="/nuevo-instrumento">Nuevo Producto</Link>
+						<Link to="/nuevo-producto">Nuevo Producto</Link>
 					</div>
 					
 					<div style={{"width": "calc(100% / 3)"}}>
@@ -101,8 +101,8 @@ class Producto extends React.Component {
 			<tr>
 				<td>{this.props.producto.nombre}</td>
 				<td>
-					<Link to={`/ver-instrumento/${id}`}>Ver</Link> | 
-					<Link to={`/editar-instrumento/${id}`}>Editar</Link>
+					<Link to={`/ver-producto/${id}`}>Ver</Link> | 
+					<Link to={`/editar-producto/${id}`}>Editar</Link>
 				</td>
 			</tr>
 		)

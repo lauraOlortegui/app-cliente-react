@@ -5,37 +5,33 @@ const {useState, useEffect} = require('react');
 
 
 
-const PageVerInstrumento = (props) => {
+const PageVerProducto = (props) => {
 
     // const id = props.match.params.id;
     let { id } = useParams();
-    const [instrumento, setInstrumento] = useState({});
+    const [producto, setProducto] = useState({});
 
     useEffect(() => {
         client({
             method: 'GET',
-            path: '/api/instrumentos/' + id
+            path: '/api/productos/' + id
         }).done(response => {
-            setInstrumento(response.entity);
+            setProducto(response.entity);
         });
     }, []);
 
 
     return (
         <>
-            <h1>Ver Instrumento</h1>
+            <h1>Ver Producto</h1>
             <table>
                 <tr>
                     <th>Nombre</th>
-                    <td>{instrumento.nombre}</td>
+                    <td>{producto.nombre}</td>
                 </tr>
                 <tr>
-                    <th>Categoría</th>
-                    <td>{instrumento.categoria}</td>
-                </tr>
-                <tr>
-                    <th>Descripción</th>
-                    <td>{instrumento.descripcion}</td>
+                    <th>Precio</th>
+                    <td>{producto.precio}</td>
                 </tr>
             </table>
 
@@ -44,4 +40,4 @@ const PageVerInstrumento = (props) => {
     )
 }
 
-module.exports = PageVerInstrumento;
+module.exports = PageVerProducto;
