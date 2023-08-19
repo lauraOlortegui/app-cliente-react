@@ -41077,9 +41077,8 @@ var PageHome = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, PageHome);
     _this = _super.call(this, props);
     _this.state = {
-      instrumentos: [],
-      musicos: [],
-      bandas: []
+      productos: [],
+      ventas: []
     };
     return _this;
   }
@@ -41089,26 +41088,18 @@ var PageHome = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
       client({
         method: 'GET',
-        path: '/api/instrumentos'
+        path: '/api/productos'
       }).done(function (response) {
         _this2.setState({
-          instrumentos: response.entity._embedded.instrumentos
+          productos: response.entity._embedded.productos
         });
       });
       client({
         method: 'GET',
-        path: '/api/musicos'
+        path: '/api/ventas'
       }).done(function (response) {
         _this2.setState({
-          musicos: response.entity._embedded.musicos
-        });
-      });
-      client({
-        method: 'GET',
-        path: '/api/bandas'
-      }).done(function (response) {
-        _this2.setState({
-          bandas: response.entity._embedded.bandas
+          ventas: response.entity._embedded.ventas
         });
       });
     }
@@ -41125,35 +41116,24 @@ var PageHome = /*#__PURE__*/function (_React$Component) {
           "width": "calc(100% / 3)"
         }
       }, /*#__PURE__*/React.createElement(Titulo, {
-        entidad: "Instrumentos",
+        entidad: "Productos",
         emoji: "\uD83C\uDFB8"
-      }), /*#__PURE__*/React.createElement(InstrumentoList, {
-        instrumentos: this.state.instrumentos
+      }), /*#__PURE__*/React.createElement(ProductoList, {
+        productos: this.state.productos
       }), /*#__PURE__*/React.createElement(Link, {
         to: "/nuevo-instrumento"
-      }, "Nuevo Instrumento")), /*#__PURE__*/React.createElement("div", {
+      }, "Nuevo Producto")), /*#__PURE__*/React.createElement("div", {
         style: {
           "width": "calc(100% / 3)"
         }
       }, /*#__PURE__*/React.createElement(Titulo, {
-        entidad: "Musicos",
-        emoji: "\uD83C\uDFB5"
-      }), /*#__PURE__*/React.createElement(MusicoList, {
-        musicos: this.state.musicos
-      }), /*#__PURE__*/React.createElement(Link, {
-        to: "/nuevo-musico"
-      }, "Nuevo Musico")), /*#__PURE__*/React.createElement("div", {
-        style: {
-          "width": "calc(100% / 3)"
-        }
-      }, /*#__PURE__*/React.createElement(Titulo, {
-        entidad: "Bandas",
+        entidad: "Ventas",
         emoji: "\uD83D\uDC69\uD83C\uDFFC\u200D\uD83C\uDFA4"
-      }), /*#__PURE__*/React.createElement(BandaList, {
-        bandas: this.state.bandas
+      }), /*#__PURE__*/React.createElement(VentaList, {
+        ventas: this.state.ventas
       }), /*#__PURE__*/React.createElement(Link, {
         to: "/nueva-banda"
-      }, "Nueva Banda"))));
+      }, "Nueva Venta"))));
     }
   }]);
   return PageHome;
@@ -41161,130 +41141,89 @@ var PageHome = /*#__PURE__*/function (_React$Component) {
 var Titulo = function Titulo(props) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, props.emoji, " - ", props.entidad), /*#__PURE__*/React.createElement("span", null, "Listado completo de ", props.entidad.toLowerCase(), ":"), /*#__PURE__*/React.createElement("hr", null));
 };
-var InstrumentoList = /*#__PURE__*/function (_React$Component2) {
-  _inherits(InstrumentoList, _React$Component2);
-  var _super2 = _createSuper(InstrumentoList);
-  function InstrumentoList() {
-    _classCallCheck(this, InstrumentoList);
+var ProductoList = /*#__PURE__*/function (_React$Component2) {
+  _inherits(ProductoList, _React$Component2);
+  var _super2 = _createSuper(ProductoList);
+  function ProductoList() {
+    _classCallCheck(this, ProductoList);
     return _super2.apply(this, arguments);
   }
-  _createClass(InstrumentoList, [{
+  _createClass(ProductoList, [{
     key: "render",
     value: function render() {
-      var instrumentos = this.props.instrumentos.map(function (instrumento) {
-        return /*#__PURE__*/React.createElement(Instrumento, {
-          key: instrumento._links.self.href,
-          instrumento: instrumento
+      var productos = this.props.productos.map(function (producto) {
+        return /*#__PURE__*/React.createElement(Producto, {
+          key: producto._links.self.href,
+          producto: producto
         });
       });
       return /*#__PURE__*/React.createElement("table", {
         border: "1"
-      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Acciones")), instrumentos));
+      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Acciones")), productos));
     }
   }]);
-  return InstrumentoList;
+  return ProductoList;
 }(React.Component);
-var MusicoList = /*#__PURE__*/function (_React$Component3) {
-  _inherits(MusicoList, _React$Component3);
-  var _super3 = _createSuper(MusicoList);
-  function MusicoList() {
-    _classCallCheck(this, MusicoList);
+var VentaList = /*#__PURE__*/function (_React$Component3) {
+  _inherits(VentaList, _React$Component3);
+  var _super3 = _createSuper(VentaList);
+  function VentaList() {
+    _classCallCheck(this, VentaList);
     return _super3.apply(this, arguments);
   }
-  _createClass(MusicoList, [{
+  _createClass(VentaList, [{
     key: "render",
     value: function render() {
-      var musicos = this.props.musicos.map(function (musico) {
-        return /*#__PURE__*/React.createElement(Musico, {
-          key: musico._links.self.href,
-          musico: musico
+      var ventas = this.props.ventas.map(function (venta) {
+        return /*#__PURE__*/React.createElement(Venta, {
+          key: venta._links.self.href,
+          venta: venta
         });
       });
       return /*#__PURE__*/React.createElement("table", {
         border: "1"
-      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Acciones")), musicos));
+      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Total"), /*#__PURE__*/React.createElement("th", null, "Acciones")), ventas));
     }
   }]);
-  return MusicoList;
+  return VentaList;
 }(React.Component);
-var BandaList = /*#__PURE__*/function (_React$Component4) {
-  _inherits(BandaList, _React$Component4);
-  var _super4 = _createSuper(BandaList);
-  function BandaList() {
-    _classCallCheck(this, BandaList);
+var Producto = /*#__PURE__*/function (_React$Component4) {
+  _inherits(Producto, _React$Component4);
+  var _super4 = _createSuper(Producto);
+  function Producto() {
+    _classCallCheck(this, Producto);
     return _super4.apply(this, arguments);
   }
-  _createClass(BandaList, [{
+  _createClass(Producto, [{
     key: "render",
     value: function render() {
-      var bandas = this.props.bandas.map(function (banda) {
-        return /*#__PURE__*/React.createElement(Banda, {
-          key: banda._links.self.href,
-          banda: banda
-        });
-      });
-      return /*#__PURE__*/React.createElement("table", {
-        border: "1"
-      }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Acciones")), bandas));
-    }
-  }]);
-  return BandaList;
-}(React.Component);
-var Instrumento = /*#__PURE__*/function (_React$Component5) {
-  _inherits(Instrumento, _React$Component5);
-  var _super5 = _createSuper(Instrumento);
-  function Instrumento() {
-    _classCallCheck(this, Instrumento);
-    return _super5.apply(this, arguments);
-  }
-  _createClass(Instrumento, [{
-    key: "render",
-    value: function render() {
-      var id = this.props.instrumento._links.self.href.split("/").slice(-1);
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.instrumento.nombre), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
+      var id = this.props.producto._links.self.href.split("/").slice(-1);
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.producto.nombre), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
         to: "/ver-instrumento/".concat(id)
       }, "Ver"), " |", /*#__PURE__*/React.createElement(Link, {
         to: "/editar-instrumento/".concat(id)
       }, "Editar")));
     }
   }]);
-  return Instrumento;
+  return Producto;
 }(React.Component);
-var Musico = /*#__PURE__*/function (_React$Component6) {
-  _inherits(Musico, _React$Component6);
-  var _super6 = _createSuper(Musico);
-  function Musico() {
-    _classCallCheck(this, Musico);
-    return _super6.apply(this, arguments);
+var Venta = /*#__PURE__*/function (_React$Component5) {
+  _inherits(Venta, _React$Component5);
+  var _super5 = _createSuper(Venta);
+  function Venta() {
+    _classCallCheck(this, Venta);
+    return _super5.apply(this, arguments);
   }
-  _createClass(Musico, [{
+  _createClass(Venta, [{
     key: "render",
     value: function render() {
-      var id = this.props.musico._links.self.href.split("/").slice(-1);
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.musico.nombre), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
-        to: "/editar-musico/".concat(id)
-      }, "Editar")));
-    }
-  }]);
-  return Musico;
-}(React.Component);
-var Banda = /*#__PURE__*/function (_React$Component7) {
-  _inherits(Banda, _React$Component7);
-  var _super7 = _createSuper(Banda);
-  function Banda() {
-    _classCallCheck(this, Banda);
-    return _super7.apply(this, arguments);
-  }
-  _createClass(Banda, [{
-    key: "render",
-    value: function render() {
-      var id = this.props.banda._links.self.href.split("/").slice(-1);
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.banda.nombre), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
+      var id = this.props.venta._links.self.href.split("/").slice(-1);
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.venta.total), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
         to: "/ver-banda/".concat(id)
       }, "Ver Banda")));
     }
   }]);
-  return Banda;
+  return Venta;
 }(React.Component);
 module.exports = PageHome;
 
