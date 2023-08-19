@@ -117,6 +117,7 @@ class Venta extends React.Component {
 				<td>{this.props.venta.total}</td>
 				<td>
 					<Link to={`/ver-venta/${id}`}>Ver Venta</Link>
+					<Link to={`/editar-venta/${id}`}>Editar</Link>
 				</td>
 			</tr>
 		)
