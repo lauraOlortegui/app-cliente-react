@@ -24,15 +24,15 @@ class PageHome extends React.Component {
 
 				<div style={{"width": "100%", "display": "flex"}}>
 					<div style={{"width": "calc(100% / 3)"}}>
-						<Titulo entidad="Productos" emoji="🎸" />
+						<Titulo entidad="Productos" emoji="🧺" />
 						<ProductoList productos={this.state.productos} />
 						<Link to="/nuevo-producto">Nuevo Producto</Link>
 					</div>
 					
 					<div style={{"width": "calc(100% / 3)"}}>
-						<Titulo entidad="Ventas" emoji="👩🏼‍🎤" />
+						<Titulo entidad="Ventas" emoji="💵" />
 						<VentaList ventas={this.state.ventas} />
-						<Link to="/nueva-banda">Nueva Venta</Link>
+						<Link to="/nueva-venta">Nueva Venta</Link>
 					</div>
 				</div>
 

@@ -31,7 +31,7 @@ const PageNuevoProducto= () => {
                 <input type="text" id="precio" name="precio" onChange={(e)=>setPrecio(e.target.value)} />
                 <br />
                 <br />
-                <input type="submit" value="Nuevo Instrumento" />
+                <input type="submit" value="Nuevo Producto" />
             </form>
             <Link to="/">Volver</Link>
         </>
